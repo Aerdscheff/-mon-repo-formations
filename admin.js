@@ -25,6 +25,11 @@ function initAdminUI() {
   header.appendChild(btn);
 }
 
+// exposer certaines fonctions au scope global pour lier aux attributs HTML
+window.openAdminOverlay = openAdminOverlay;
+window.closeAdminOverlay = closeAdminOverlay;
+window.downloadModifiedPack = downloadModifiedPack;
+
 /**
  * Ouvrir l'overlay d'édition pour le pack courant.
  */

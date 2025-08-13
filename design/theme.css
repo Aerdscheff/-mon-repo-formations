@@ -1,0 +1,49 @@
+/* Thème Äerdschëff (sobre, low-tech, chaleureux) */
+:root{
+  --bg:#f7f5ef; --surface:#ffffff; --ink:#1f2421; --muted:#6b6b6b;
+  --accent:#5f8f66; --accent-2:#c2a26b; --line:#d9d3c6;
+  --ok:#3a7a3a; --warn:#b66a2c; --err:#8b2e2e;
+  --radius-lg:18px; --radius-md:14px; --radius-sm:10px;
+  --shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+html,body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Lato","Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.5; text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
+}
+
+a{ color:var(--accent); text-decoration:none }
+a:hover{ text-decoration:underline }
+
+.container{ max-width:1100px; margin:auto; padding:1rem }
+.header,.footer{
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--radius-lg); box-shadow:var(--shadow); padding:1rem;
+}
+
+.grid{ display:grid; gap:1rem }
+@media (min-width:768px){ .grid.cols-2{ grid-template-columns:1fr 1fr } }
+@media (min-width:1024px){ .grid.cols-3{ grid-template-columns:1fr 1fr 1fr } }
+
+.card{
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--radius-lg); box-shadow:var(--shadow); padding:1rem;
+}
+
+.btn{
+  background:var(--accent); color:#fff; border:none;
+  border-radius:14px; padding:.7rem 1rem; cursor:pointer;
+}
+.btn.secondary{ background:#fff; color:var(--accent); border:1px solid var(--accent) }
+.btn:disabled{ opacity:.5; cursor:not-allowed }
+
+.thumb{ border-radius:12px; border:1px solid var(--line); object-fit:cover }
+.badge{ width:64px; height:64px; vertical-align:middle }
+
+.progress{ position:relative; height:10px; background:#eee; border-radius:8px; margin:12px 0 }
+.progress #bar{ height:10px; width:0; background:var(--accent); border-radius:8px; transition:width .18s }
+.progress #pc{ position:absolute; top:-22px; right:0; font-size:.9rem; color:var(--muted) }
+
+:focus-visible{ outline:3px solid var(--accent-2); outline-offset:2px }
+@media (prefers-reduced-motion:reduce){ *{ animation:none!important; transition:none!important } }

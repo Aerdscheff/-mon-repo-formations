@@ -1,0 +1,34 @@
+{
+  "id": "ia_enjeux",
+  "title": "IA & enjeux",
+  "cover": "images/headers/ia_enjeux.webp",
+  "questions": [
+    {
+      "id": "q1",
+      "image": "images/ia_enjeux/q1.webp",
+      "title": "Quel usage est interdit par l’AI Act ?",
+      "choices": [
+        { "label": "Notation sociale publique", "correct": true, "explain": "Pratique prohibée par l'AI Act car elle porte atteinte aux libertés individuelles." },
+        { "label": "Chatbots en entreprise", "correct": false, "explain": "Autorisé sous conditions (transparence, sécurité, etc.)." }
+      ]
+    },
+    {
+      "id": "q2",
+      "image": "images/ia_enjeux/q2.webp",
+      "title": "Quels sont les 3 piliers d’une IA responsable ?",
+      "choices": [
+        { "label": "Éthique, transparence, sobriété", "correct": true, "explain": "Ces critères sont essentiels pour limiter les risques et l'empreinte." },
+        { "label": "Performance, opacité, profit", "correct": false, "explain": "Cette combinaison ne tient pas compte des enjeux sociaux et environnementaux." }
+      ]
+    },
+    {
+      "id": "q3",
+      "image": "images/ia_enjeux/q3.webp",
+      "title": "Quel rôle joue la gouvernance dans l’IA ?",
+      "choices": [
+        { "label": "Définir des garde‑fous et encadrer les usages", "correct": true, "explain": "Une gouvernance claire permet d’anticiper et de limiter les dérives." },
+        { "label": "Développer l’algorithme le plus puissant", "correct": false, "explain": "La gouvernance se concentre sur le cadre plutôt que sur la performance brute." }
+      ]
+    }
+  ]
+}

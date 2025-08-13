@@ -4,40 +4,8 @@
  * gère l'affichage des questions et la persistance des scores via localStorage.
  */
 
-const KEY = 'aerdscheff:scores:v1';
-
-/**
- * Charger les scores enregistrés dans localStorage.
- * @returns {Object} dictionnaire packId → {value:number,date:string}
- */
-function loadScores() {
-  try {
-    return JSON.parse(localStorage.getItem(KEY)) || {};
-  } catch (e) {
-    return {};
-  }
-}
-
-/**
- * Obtenir le score pour un pack spécifique.
- * @param {string} packId 
- * @returns {number|null}
- */
-function getScore(packId) {
-  const data = loadScores();
-  return (data[packId] || {}).value ?? null;
-}
-
-/**
- * Enregistrer un score dans localStorage.
- * @param {string} packId 
- * @param {number} value 
- */
-function saveScore(packId, value) {
-  const data = loadScores();
-  data[packId] = { value: value, date: new Date().toISOString() };
-  localStorage.setItem(KEY, JSON.stringify(data));
-}
+import { asset } from '../utils/paths.js';
+import { getScore, saveScore } from './scores.js';
 
 // Liste des packs disponibles avec titre et couverture.
 // Cette liste est utilisée pour afficher le catalogue principal.
@@ -63,6 +31,9 @@ const state = {
   score: 0    // nombre de réponses correctes
 };
 
+// Exposer l'état globalement pour le module admin
+window.state = state;
+
 /**
  * Récupérer les paramètres de la requête.
  * @returns {URLSearchParams}
@@ -85,7 +56,8 @@ function showCatalog() {
     card.className = 'card pack-card';
     const img = document.createElement('img');
     img.className = 'pack-cover';
-    img.src = pack.cover;
+    // résoudre le chemin de couverture via asset()
+    img.src = asset(pack.cover);
     img.alt = '';
     img.loading = 'lazy';
     card.appendChild(img);
@@ -110,7 +82,9 @@ function showCatalog() {
  * @returns {Promise<Object>}
  */
 async function loadJson(path) {
-  const res = await fetch(path);
+  // Utiliser asset() pour résoudre les chemins selon l'environnement (local ou GitHub Pages)
+  const url = asset(path);
+  const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) throw new Error('Erreur de chargement du pack');
   return res.json();
 }
@@ -168,9 +142,13 @@ function renderQuestion() {
   row.style.display = 'flex';
   const img = document.createElement('img');
   img.className = 'question-image';
-  img.src = question.image;
-  img.alt = '';
+  // Résoudre correctement le chemin de l'image selon l'environnement.
+  const slug = state.pack.id;
+  const qImg = question.image.startsWith('images/') ? question.image : `images/${slug}/${question.image}`;
+  img.src = asset(qImg);
   img.loading = 'lazy';
+  img.classList.add('thumb');
+  img.alt = '';
   row.appendChild(img);
   const content = document.createElement('div');
   const h = document.createElement('h3');
