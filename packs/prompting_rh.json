@@ -1,83 +1,37 @@
 {
   "id": "prompting_rh",
   "title": "Prompting RH — Starter",
-  "description": "Pack rapide pour équipes RH : prompts recrutement, QVT, formation.",
-  "theme": { "accent": "#2f6f62", "accent2": "#d0a554" },
-  "sitesUrl": "",
-  "logoData": "",
-  "curriculum": {
-    "intro": {
-      "id": "intro",
-      "title": "Accueil & objectifs",
-      "goal": "Cadrer les usages IA côté RH et les garde-fous.",
-      "methods": "Présentation courte + quiz.",
-      "timeMin": 8,
-      "quiz": [
-        {
-          "type": "mcq",
-          "q": "Un bon prompt RH inclut d'abord…",
-          "opts": ["Un rôle et un contexte RH", "Uniquement des emojis", "Des liens non vérifiés"],
-          "correct": 0,
-          "xp": 6,
-          "explain": "Rôle + contexte + objectif + contraintes = base solide."
-        }
-      ],
-      "challenge": {
-        "title": "Cas d'usage",
-        "prompt": "Décris en 2 lignes un cas d'usage IA RH pertinent dans ton orga.",
-        "rubric": ["clair", "utile", "RGPD"]
-      }
+  "cover": "images/headers/default.webp",
+  "questions": [
+    {
+      "id": "q1",
+      "image": "images/ia_enjeux/q1.webp",
+      "title": "Un bon prompt RH inclut d'abord…",
+      "choices": [
+        {"label": "Un rôle et un contexte RH", "correct": true, "explain": "Rôle + contexte + objectif + contraintes = base solide."},
+        {"label": "Uniquement des emojis", "correct": false, "explain": "Ce n'est pas assez informatif."},
+        {"label": "Des liens non vérifiés", "correct": false, "explain": "Toujours vérifier les sources."}
+      ]
     },
-    "modules": [
-      {
-        "id": "m1",
-        "title": "Recrutement assisté",
-        "goal": "Structurer prompts pour descriptions de poste et tri initial.",
-        "methods": "Quiz + atelier.",
-        "timeMin": 15,
-        "quiz": [
-          {
-            "type": "mcq",
-            "q": "Pour éviter les biais, on…",
-            "opts": ["Formule des critères objectifs et vérifiables", "Demande l'âge", "Cite des stéréotypes"],
-            "correct": 0,
-            "xp": 6
-          }
-        ],
-        "challenge": {
-          "title": "Prompt fiche de poste",
-          "prompt": "Écris un prompt (rôle, objectifs, 3 critères) pour générer une fiche de poste neutre.",
-          "rubric": ["rôle/objectif", "critères", "neutralité"]
-        }
-      },
-      {
-        "id": "m2",
-        "title": "Formation & Compétences",
-        "goal": "Créer un plan de formation assisté par IA, par compétences.",
-        "methods": "Quiz + mini-défi.",
-        "timeMin": 12,
-        "quiz": [
-          {
-            "type": "mcq",
-            "q": "Pour un plan efficace, il faut…",
-            "opts": ["Objectifs mesurables", "Des slogans vagues", "Tout déléguer à l'IA"],
-            "correct": 0,
-            "xp": 6
-          }
-        ],
-        "challenge": {
-          "title": "Plan 30‑60‑90",
-          "prompt": "Écris les jalons d’un plan 30‑60‑90 jours pour upskilling d’une équipe RH.",
-          "rubric": ["mesurable", "réaliste", "impact"]
-        }
-      }
-    ],
-    "feedback": {
-      "id": "outro",
-      "title": "Feedback & suites",
-      "goal": "Valider les acquis et décider d’un prochain pas concret.",
-      "methods": "Questionnaire + engagement.",
-      "timeMin": 6
+    {
+      "id": "q2",
+      "image": "images/ia_enjeux/q2.webp",
+      "title": "Pour éviter les biais, on…",
+      "choices": [
+        {"label": "Formule des critères objectifs et vérifiables", "correct": true, "explain": "Cela aide à réduire les biais."},
+        {"label": "Demande l'âge", "correct": false, "explain": "Ceci est discriminatoire."},
+        {"label": "Cite des stéréotypes", "correct": false, "explain": "Ceci est inapproprié."}
+      ]
+    },
+    {
+      "id": "q3",
+      "image": "images/ia_enjeux/q3.webp",
+      "title": "Pour un plan efficace, il faut…",
+      "choices": [
+        {"label": "Objectifs mesurables", "correct": true, "explain": "Un plan doit être précis et vérifiable."},
+        {"label": "Des slogans vagues", "correct": false, "explain": "Slogans vagues ne sont pas mesurables."},
+        {"label": "Tout déléguer à l'IA", "correct": false, "explain": "L'IA est un outil, pas une solution complète."}
+      ]
     }
-  }
+  ]
 }
