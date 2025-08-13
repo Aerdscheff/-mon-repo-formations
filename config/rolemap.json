@@ -1,0 +1,66 @@
+{
+  "xp": {
+    "levels": [0,100,250,450,700,1000,1350,1750,2200,2700,3250,3850,4500,5200,5950,6750,7600,8500,9450,10400,11450,12600,13850,15200,16650,18200,19850,21600,23500,25500,27600],
+    "streakBonus": 10,
+    "basePerCorrect": 20,
+    "maxXpPerRun": 2000
+  },
+  "difficulty": {
+    "debutant": 1.0,
+    "initie": 1.25,
+    "multiplicateur": 1.5,
+    "maitre": 2.0,
+    "godlike": 3.0
+  },
+  "roles": {
+    "tiers": [
+      { "id": "debutant", "minLevel": 1, "maxLevel": 5, "title": "Débutant" },
+      { "id": "initie", "minLevel": 6, "maxLevel": 15, "title": "Initié" },
+      { "id": "maitre", "minLevel": 16, "maxLevel": 30, "title": "Maître" },
+      { "id": "godlike", "minLevel": 31, "maxLevel": 99, "title": "Godlike" }
+    ],
+    "jobs": [
+      {
+        "id":"enseignant","title":"Enseignant",
+        "unlockAtTier":"initie",
+        "specialties":[
+          {"id":"lowtech","title":"Spécialiste Low-Tech"},
+          {"id":"facilitation","title":"Facilitateur·rice de forums"},
+          {"id":"ia-ethique","title":"Formateur·rice IA éthique"}
+        ]
+      },
+      {
+        "id":"communicant","title":"Communicant",
+        "unlockAtTier":"initie",
+        "specialties":[
+          {"id":"strategie","title":"Stratégie médias"},
+          {"id":"evenements","title":"Organisation d’événements"},
+          {"id":"redaction","title":"Rédaction engageante"}
+        ]
+      },
+      {
+        "id":"administratif","title":"Administratif",
+        "unlockAtTier":"initie",
+        "specialties":[
+          {"id":"projets","title":"Gestion de projet"},
+          {"id":"reseaux","title":"Animation de réseau"},
+          {"id":"budget","title":"Budget durable"}
+        ]
+      },
+      {
+        "id":"it","title":"IT",
+        "unlockAtTier":"initie",
+        "specialties":[
+          {"id":"systemes","title":"Architecte systèmes"},
+          {"id":"dev-lowtech","title":"Dev app low-tech"},
+          {"id":"securite","title":"Admin sécurité"}
+        ]
+      }
+    ],
+    "rules": {
+      "chooseJobAtTier": "initie",
+      "chooseSpecialtyAtTier": "maitre",
+      "godlikeMasterAllSpecialties": true
+    }
+  }
+}
