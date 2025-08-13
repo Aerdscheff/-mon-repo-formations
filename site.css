@@ -1,0 +1,169 @@
+/*
+ * Style principal pour l'application de formations gamifiées.
+ * Inspiré de la charte aerdscheff.lu avec une palette naturelle,
+ * arrondis doux et typographie claire.
+ */
+
+:root {
+  --bg: #f7f5ef;
+  --surface: #ffffff;
+  --ink: #1f2421;
+  --muted: #6b6b6b;
+  --accent: #5f8f66;
+  --accent-2: #c2a26b;
+  --line: #d9d3c6;
+  --ok: #3a7a3a;
+  --warn: #b66a2c;
+  --err: #8b2e2e;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Lato", "Inter", system-ui, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background-color .2s ease;
+}
+
+.btn.secondary {
+  background: var(--accent-2);
+}
+
+.btn:hover {
+  filter: brightness(1.05);
+}
+
+/* Pack cards */
+.pack-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pack-cover {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  margin-bottom: 0.5rem;
+}
+
+.pack-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.question-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  margin-right: 0.75rem;
+}
+
+.choices {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.choice {
+  margin-bottom: 0.5rem;
+}
+
+.choice input {
+  margin-right: 0.5rem;
+}
+
+.feedback {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.feedback.ok {
+  color: var(--ok);
+}
+
+.feedback.err {
+  color: var(--err);
+}
+
+/* Admin overlay */
+#admin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  z-index: 1000;
+}
+
+#admin-overlay.active {
+  display: flex;
+}
+
+#admin-overlay .panel {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow);
+}
+
+#admin-overlay textarea {
+  width: 100%;
+  min-height: 300px;
+  font-family: monospace;
+}
