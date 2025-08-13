@@ -6,6 +6,9 @@
 
 import { asset } from '../utils/paths.js';
 import { getScore, saveScore } from './scores.js';
+import { loadRoleMap, computeXpEarned, applyXp } from './progression.js';
+// placeholder commit run call (will be implemented server-side)
+import { commitRun } from './supabase-client.js';
 
 // Liste des packs disponibles avec titre et couverture.
 // Cette liste est utilisée pour afficher le catalogue principal.
@@ -28,7 +31,11 @@ const PACK_LIST = [
 const state = {
   pack: null, // objet pack chargé
   index: 0,   // index de la question courante
-  score: 0    // nombre de réponses correctes
+  score: 0,    // nombre de réponses correctes
+  wrong: 0,    // nombre de réponses incorrectes
+  difficulty: 'debutant', // difficulté sélectionnée
+  roleMap: null, // configuration rolemap chargée
+  progress: null // dernier état de progression chargé
 };
 
 // Exposer l'état globalement pour le module admin
@@ -102,6 +109,30 @@ function showPack() {
   h1.textContent = pack.title;
   header.appendChild(h1);
   container.appendChild(header);
+  // Sélection de la difficulté au début du pack
+  if (state.index === 0) {
+    const diffDiv = document.createElement('div');
+    diffDiv.className = 'card';
+    const label = document.createElement('label');
+    label.textContent = 'Choisis la difficulté : ';
+    const select = document.createElement('select');
+    // options basées sur le roleMap
+    if (state.roleMap) {
+      Object.keys(state.roleMap.difficulty).forEach(key => {
+        const opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = key;
+        select.appendChild(opt);
+      });
+    }
+    select.value = state.difficulty;
+    select.addEventListener('change', () => {
+      state.difficulty = select.value;
+    });
+    label.appendChild(select);
+    diffDiv.appendChild(label);
+    container.appendChild(diffDiv);
+  }
   // zone question
   const qContainer = document.createElement('div');
   qContainer.id = 'question-area';
@@ -122,8 +153,23 @@ function renderQuestion() {
     const summary = document.createElement('div');
     summary.className = 'card';
     summary.innerHTML = `<h2>Résultat</h2><p>Tu as obtenu ${state.score} bonne(s) réponse(s) sur ${pack.questions.length} (${pct}%).</p>`;
-    // enregistrer score
+    // Calcul XP et progression
+    let xpEarned = 0;
+    if (state.roleMap) {
+      xpEarned = computeXpEarned({
+        correct: state.score,
+        wrong: state.wrong,
+        streakMax: 0,
+        difficultyId: state.difficulty
+      }, state.roleMap);
+    }
+    summary.innerHTML += `<p>XP gagné : ${xpEarned}</p>`;
+    // Enregistrer score localement (pour le pack)
     saveScore(pack.id, pct);
+    // Mettre à jour progression locale
+    if (state.progress && state.roleMap) {
+      state.progress = applyXp(state.progress, xpEarned, state.roleMap);
+    }
     qContainer.appendChild(summary);
     const back = document.createElement('button');
     back.className = 'btn secondary';
@@ -179,6 +225,7 @@ function renderQuestion() {
         feedback.classList.add('ok');
         feedback.textContent = '✅ Correct. ' + (choice.explain || '');
       } else {
+        state.wrong += 1;
         feedback.classList.add('err');
         feedback.textContent = '✖ Incorrect. ' + (choice.explain || '');
       }
@@ -212,6 +259,20 @@ async function init() {
     showCatalog();
     return;
   }
+  // charger roleMap et progress
+  try {
+    state.roleMap = await loadRoleMap();
+    // initialiser une structure de progression locale (peut être récupérée du backend par la suite)
+    state.progress = {
+      xp_total: 0,
+      level: 1,
+      tier: 'debutant',
+      job: null,
+      specialty: null
+    };
+  } catch (e) {
+    console.warn('Role map introuvable', e);
+  }
   // charger pack
   const packInfo = PACK_LIST.find(p => p.id === packId);
   if (!packInfo) {
@@ -224,6 +285,7 @@ async function init() {
     state.pack = data;
     state.index = 0;
     state.score = 0;
+    state.wrong = 0;
     showPack();
   } catch (err) {
     console.error(err);
