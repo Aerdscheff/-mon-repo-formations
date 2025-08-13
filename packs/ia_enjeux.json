@@ -3,32 +3,35 @@
   "title": "IA & enjeux",
   "cover": "images/headers/ia_enjeux.webp",
   "questions": [
-    {
-      "id": "q1",
-      "image": "images/ia_enjeux/q1.webp",
-      "title": "Quel usage est interdit par l’AI Act ?",
-      "choices": [
-        { "label": "Notation sociale publique", "correct": true, "explain": "Pratique prohibée par l'AI Act car elle porte atteinte aux libertés individuelles." },
-        { "label": "Chatbots en entreprise", "correct": false, "explain": "Autorisé sous conditions (transparence, sécurité, etc.)." }
-      ]
-    },
-    {
-      "id": "q2",
-      "image": "images/ia_enjeux/q2.webp",
-      "title": "Quels sont les 3 piliers d’une IA responsable ?",
-      "choices": [
-        { "label": "Éthique, transparence, sobriété", "correct": true, "explain": "Ces critères sont essentiels pour limiter les risques et l'empreinte." },
-        { "label": "Performance, opacité, profit", "correct": false, "explain": "Cette combinaison ne tient pas compte des enjeux sociaux et environnementaux." }
-      ]
-    },
-    {
-      "id": "q3",
-      "image": "images/ia_enjeux/q3.webp",
-      "title": "Quel rôle joue la gouvernance dans l’IA ?",
-      "choices": [
-        { "label": "Définir des garde‑fous et encadrer les usages", "correct": true, "explain": "Une gouvernance claire permet d’anticiper et de limiter les dérives." },
-        { "label": "Développer l’algorithme le plus puissant", "correct": false, "explain": "La gouvernance se concentre sur le cadre plutôt que sur la performance brute." }
-      ]
-    }
+    {"id":"q1","image":"images/ia_enjeux/q1.webp","title":"Qu'est-ce qu'un LLM ?","choices":[{"label":"Un modèle qui prédit des tokens","correct":true},{"label":"Une base de faits","correct":false},{"label":"Un robot","correct":false}]},
+    {"id":"q2","image":"images/ia_enjeux/q2.webp","title":"Pourquoi la sobriété numérique est-elle importante ?","choices":[{"label":"Réduire l'impact environnemental","correct":true},{"label":"Augmenter l'énergie consommée","correct":false},{"label":"Remplacer les humains","correct":false}]},
+    {"id":"q3","image":"images/ia_enjeux/q3.webp","title":"Que prohibe l'AI Act ?","choices":[{"label":"La notation sociale publique","correct":true},{"label":"Les chatbots","correct":false},{"label":"Le tri sélectif","correct":false}]},
+    {"id":"q4","image":"images/ia_enjeux/q1.webp","title":"Quel est un biais courant ?","choices":[{"label":"Biais de confirmation","correct":true},{"label":"Multiplication","correct":false},{"label":"Division","correct":false}]},
+    {"id":"q5","image":"images/ia_enjeux/q2.webp","title":"Le RGPD protège :","choices":[{"label":"Les données personnelles","correct":true},{"label":"Les données publiques","correct":false},{"label":"Les algorithmes","correct":false}]},
+    {"id":"q6","image":"images/ia_enjeux/q3.webp","title":"Une IA explicable permet :","choices":[{"label":"De comprendre ses décisions","correct":true},{"label":"De cacher ses actions","correct":false},{"label":"De chanter","correct":false}]},
+    {"id":"q7","image":"images/ia_enjeux/q1.webp","title":"Un prompt clair doit :","choices":[{"label":"Définir rôle et objectif","correct":true},{"label":"Être ambigu","correct":false},{"label":"Utiliser des emojis","correct":false}]},
+    {"id":"q8","image":"images/ia_enjeux/q2.webp","title":"Qu'est-ce qu'un deepfake ?","choices":[{"label":"Une vidéo falsifiée","correct":true},{"label":"Un virus","correct":false},{"label":"Un antivirus","correct":false}]},
+    {"id":"q9","image":"images/ia_enjeux/q3.webp","title":"Les données biaisées :","choices":[{"label":"Engendrent des modèles biaisés","correct":true},{"label":"Améliorent l'équité","correct":false},{"label":"N'ont pas d'impact","correct":false}]},
+    {"id":"q10","image":"images/ia_enjeux/q1.webp","title":"Un modèle open source est :","choices":[{"label":"Public et modifiable","correct":true},{"label":"Payant","correct":false},{"label":"Secret","correct":false}]},
+    {"id":"q11","image":"images/ia_enjeux/q2.webp","title":"Le PUE mesure :","choices":[{"label":"L'efficacité énergétique","correct":true},{"label":"La taille du modèle","correct":false},{"label":"Le F1-score","correct":false}]},
+    {"id":"q12","image":"images/ia_enjeux/q3.webp","title":"Un dataset diversifié :","choices":[{"label":"Réduit les biais","correct":true},{"label":"Augmente la mémoire","correct":false},{"label":"Supprime l'éthique","correct":false}]},
+    {"id":"q13","image":"images/ia_enjeux/q1.webp","title":"La gouvernance des données vise :","choices":[{"label":"La qualité et la conformité","correct":true},{"label":"La désinformation","correct":false},{"label":"Le piratage","correct":false}]},
+    {"id":"q14","image":"images/ia_enjeux/q2.webp","title":"Une attaque par inversion vise :","choices":[{"label":"Extraire des données sensibles","correct":true},{"label":"Colorer l'écran","correct":false},{"label":"Réduire le bruit","correct":false}]},
+    {"id":"q15","image":"images/ia_enjeux/q3.webp","title":"Le F1-score mesure :","choices":[{"label":"La performance d'un modèle","correct":true},{"label":"Le coût énergétique","correct":false},{"label":"La taille du disque","correct":false}]},
+    {"id":"q16","image":"images/ia_enjeux/q1.webp","title":"Quelle approche réduit l'énergie consommée ?","choices":[{"label":"Optimiser les architectures","correct":true},{"label":"Multiplier les itérations","correct":false},{"label":"Ignorer l'efficacité","correct":false}]},
+    {"id":"q17","image":"images/ia_enjeux/q2.webp","title":"Le 'streak' dans un quiz est :","choices":[{"label":"Une série de bonnes réponses","correct":true},{"label":"Un algorithme","correct":false},{"label":"Un virus","correct":false}]},
+    {"id":"q18","image":"images/ia_enjeux/q3.webp","title":"Quel est un risque des modèles fermés ?","choices":[{"label":"Opacité et manque de contrôle","correct":true},{"label":"Trop de transparence","correct":false},{"label":"Excès de coopération","correct":false}]},
+    {"id":"q19","image":"images/ia_enjeux/q1.webp","title":"L'accès aux données d'entraînement :","choices":[{"label":"Permet d'auditer les modèles","correct":true},{"label":"Est toujours interdit","correct":false},{"label":"N'a aucun intérêt","correct":false}]},
+    {"id":"q20","image":"images/ia_enjeux/q2.webp","title":"Un multiplicateur de difficulté :","choices":[{"label":"Augmente l'XP gagnée","correct":true},{"label":"Réduit la taille du pack","correct":false},{"label":"Bloque les réponses","correct":false}]},
+    {"id":"q21","image":"images/ia_enjeux/q3.webp","title":"Choisir un métier dans la role map :","choices":[{"label":"Arrive au palier Initié","correct":true},{"label":"Se fait dès le début","correct":false},{"label":"Ne se fait jamais","correct":false}]},
+    {"id":"q22","image":"images/ia_enjeux/q1.webp","title":"Les spécialisations sont disponibles :","choices":[{"label":"Au palier Maître","correct":true},{"label":"Au palier Débutant","correct":false},{"label":"Au palier Godlike uniquement","correct":false}]},
+    {"id":"q23","image":"images/ia_enjeux/q2.webp","title":"Atteindre Godlike signifie :","choices":[{"label":"Maîtriser toutes les spécialités","correct":true},{"label":"Arrêter d'apprendre","correct":false},{"label":"Changer de pack","correct":false}]},
+    {"id":"q24","image":"images/ia_enjeux/q3.webp","title":"Quelle est la priorité en IA éthique ?","choices":[{"label":"Respecter les droits fondamentaux","correct":true},{"label":"Maximiser la collecte de données","correct":false},{"label":"Ignorer les impacts","correct":false}]},
+    {"id":"q25","image":"images/ia_enjeux/q1.webp","title":"Une bonne gouvernance inclut :","choices":[{"label":"Des règles claires","correct":true},{"label":"L'anarchie","correct":false},{"label":"L'absence de cadre","correct":false}]},
+    {"id":"q26","image":"images/ia_enjeux/q2.webp","title":"Qu'est-ce que la 'privacy by design' ?","choices":[{"label":"Penser la protection dès la conception","correct":true},{"label":"Ajouter une bannière cookies","correct":false},{"label":"Externaliser la sécurité","correct":false}]},
+    {"id":"q27","image":"images/ia_enjeux/q3.webp","title":"Une IA responsable doit :","choices":[{"label":"Être transparente et équitable","correct":true},{"label":"Prioriser la vitesse","correct":false},{"label":"Ignorer les utilisateurs","correct":false}]},
+    {"id":"q28","image":"images/ia_enjeux/q1.webp","title":"Pourquoi mesurer l'impact carbone des IA ?","choices":[{"label":"Pour réduire leur empreinte environnementale","correct":true},{"label":"Pour augmenter la facture","correct":false},{"label":"Pour décorer les rapports","correct":false}]},
+    {"id":"q29","image":"images/ia_enjeux/q2.webp","title":"L'AI Act classe les usages par :","choices":[{"label":"Niveau de risque","correct":true},{"label":"Couleur du modèle","correct":false},{"label":"Taille du disque","correct":false}]},
+    {"id":"q30","image":"images/ia_enjeux/q3.webp","title":"La transparence algorithmique :","choices":[{"label":"Permet de comprendre les décisions","correct":true},{"label":"Cache les biais","correct":false},{"label":"Est illégale","correct":false}]}
   ]
 }
