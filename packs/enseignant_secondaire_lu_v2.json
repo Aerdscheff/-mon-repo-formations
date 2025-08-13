@@ -1,0 +1,169 @@
+{
+  "id": "enseignant_secondaire_lu_v2",
+  "title": "Enseignant secondaire LU (V2)",
+  "description": "Pack complet pour enseignants secondaires luxembourgeois, mélangeant quiz, micro-cas, ateliers, réflexions, scénarios et défis.",
+  "cover": "images/headers/enseignant_secondaire_lu_v2.webp",
+  "activities": [
+    {
+      "id": "ENS-Q-006",
+      "type": "quiz",
+      "difficulty": "debutant",
+      "image": "images/enseignant_secondaire_lu_v2/q6.webp",
+      "title": "Vérifier une réponse de ChatGPT :",
+      "choices": [
+        { "label": "Recouper avec sources fiables", "correct": true, "explain": "Esprit critique." },
+        { "label": "Tout croire", "correct": false, "explain": "Hallucinations possibles." },
+        { "label": "Ignorer la date", "correct": false, "explain": "Contexte important." }
+      ],
+      "tags": ["job:enseignant","lux:secondaire","axis:functionnalites_chatgpt"]
+    },
+    {
+      "id": "ENS-MC-001",
+      "type": "microcase",
+      "difficulty": "debutant",
+      "title": "Construire un prompt pour révision",
+      "prompt": "Écris un prompt (4 lignes) générant 10 QCM niveau 4e, format 'question|A|B|C|solution'.",
+      "answer_format": { "type": "short_text", "min_words": 120 },
+      "rubric": [
+        { "criterion": "pertinence" },
+        { "criterion": "conformité" },
+        { "criterion": "sobriété" },
+        { "criterion": "clarté" }
+      ],
+      "tags": ["job:enseignant","lux:secondaire","axis:functionnalites_chatgpt","axis:impacts_ecologiques"]
+    },
+    {
+      "id": "ENS-MC-002",
+      "type": "microcase",
+      "difficulty": "debutant",
+      "title": "Adapter une consigne pour différenciation",
+      "prompt": "Propose 3 niveaux d’exigence pour un même exercice, sous forme de grille.",
+      "answer_format": { "type": "short_text", "min_words": 120 },
+      "rubric": [
+        { "criterion": "pertinence" },
+        { "criterion": "conformité" },
+        { "criterion": "sobriété" },
+        { "criterion": "clarté" }
+      ],
+      "tags": ["job:enseignant","lux:secondaire","axis:functionnalites_chatgpt"]
+    },
+    {
+      "id": "ENS-AT-001",
+      "type": "atelier",
+      "difficulty": "debutant",
+      "title": "Bibliothèque de prompts 'classe' (45')",
+      "plan": [
+        "Objectifs & critères de réussite (10')",
+        "Exploration encadrée (25')",
+        "Production guidée (35')",
+        "Partages & feedbacks (15')",
+        "Synthèse & suites (5')"
+      ],
+      "materials": ["fiche-consignes.md","rubrique-evaluation.md"],
+      "tags": ["job:enseignant","lux:secondaire","axis:functionnalites_chatgpt","axis:impacts_ecologiques"]
+    },
+    {
+      "id": "ENS-RF-001",
+      "type": "reflection",
+      "difficulty": "debutant",
+      "title": "Journal — premier usage cadré",
+      "prompt": "En 5–8 phrases, ce que tu testes et comment tu limites les risques.",
+      "answer_format": { "type": "short_text", "min_words": 80 },
+      "tags": ["job:enseignant","lux:secondaire","axis:gouvernance"]
+    },
+    {
+      "id": "ENS-Q-020",
+      "type": "quiz",
+      "difficulty": "initie",
+      "image": "images/enseignant_secondaire_lu_v2/q20.webp",
+      "title": "Mémoire : à quoi sert-elle ?",
+      "choices": [
+        { "label": "Appliquer des préférences récurrentes (ton, format, niveau)", "correct": true, "explain": "Gain de cohérence." },
+        { "label": "Stocker des données sensibles d’élèves", "correct": false, "explain": "À proscrire." },
+        { "label": "Booster la vitesse GPU", "correct": false, "explain": "Sans lien." }
+      ],
+      "tags": ["job:enseignant","lux:secondaire","axis:functionnalites_chatgpt","axis:gouvernance"]
+    },
+    {
+      "id": "ENS-MC-010",
+      "type": "microcase",
+      "difficulty": "initie",
+      "title": "FR — séquence d’écriture guidée",
+      "prompt": "Décris objectifs, consignes, barème, et comment la mémoire t’aide.",
+      "answer_format": { "type": "short_text", "min_words": 120 },
+      "rubric": [
+        { "criterion": "pertinence" },
+        { "criterion": "conformité" },
+        { "criterion": "sobriété" },
+        { "criterion": "clarté" }
+      ],
+      "requires": { "job": true },
+      "tags": ["job:enseignant","lux:secondaire","axis:functionnalites_chatgpt","discipline:fr"]
+    },
+    {
+      "id": "ENS-SC-030",
+      "type": "scenario",
+      "difficulty": "maitre",
+      "title": "Mini-webapp — déploiement & maintenance",
+      "nodes": [
+        {
+          "id": "n1",
+          "prompt": "Tu dois mettre en ligne une mini-webapp pédagogique.",
+          "options": [
+            { "label": "Vérifier accessibilité, sécurité et sobriété avant déploiement", "next": "end_good", "explain": "Approche complète et responsable." },
+            { "label": "Déployer sans vérification", "next": "end_bad", "explain": "Risque de non-conformité et bugs." }
+          ]
+        },
+        { "id": "end_good", "ending": true, "feedback": "Webapp prête, conforme et sobre." },
+        { "id": "end_bad", "ending": true, "feedback": "Retour en arrière coûteux après déploiement précipité." }
+      ],
+      "tags": ["job:enseignant","lux:secondaire","axis:functionnalites_chatgpt","axis:impacts_ecologiques"]
+    },
+    {
+      "id": "ENS-DF-016",
+      "type": "defi",
+      "difficulty": "maitre",
+      "job_tags": ["enseignant"],
+      "title": "Défi — Projet d’établissement",
+      "brief": "Rédige le volet IA (1-2 pages) du projet d’établissement : rôles, procédures, suivi.",
+      "deliverable": { "type": "text", "min_words": 150 },
+      "rubric": [
+        { "criterion": "impact" },
+        { "criterion": "réalisme" },
+        { "criterion": "éthique" },
+        { "criterion": "sobriété" }
+      ],
+      "requires": { "specialty": "projet-etablissement" },
+      "tags": ["job:enseignant","lux:secondaire","axis:gouvernance","specialty:projet-etablissement"]
+    },
+    {
+      "id": "ENS-AT-014",
+      "type": "atelier",
+      "difficulty": "maitre",
+      "title": "Évaluation équitable (90')",
+      "plan": [
+        "Objectifs & critères de réussite (10')",
+        "Démonstration/Exploration guidée (20')",
+        "Production en binôme (40')",
+        "Partage & feedbacks (15')",
+        "Synthèse & suites (5')"
+      ],
+      "materials": ["fiche-consignes.md","rubrique-evaluation.md"],
+      "requires": { "specialty": "evaluation-equitable" },
+      "tags": ["job:enseignant","lux:secondaire","axis:gouvernance","axis:impacts_sociaux","specialty:evaluation-equitable"]
+    },
+    {
+      "id": "ENS-PR-006",
+      "type": "peer",
+      "difficulty": "maitre",
+      "title": "Peer — mini-webapp pédagogique",
+      "rubric": [
+        { "criterion": "pertinence", "scale": ["faible","moyen","bon","excellent"] },
+        { "criterion": "éthique/conformité", "scale": ["faible","moyen","bon","excellent"] },
+        { "criterion": "sobriété", "scale": ["faible","moyen","bon","excellent"] },
+        { "criterion": "clarté", "scale": ["faible","moyen","bon","excellent"] }
+      ],
+      "tags": ["job:enseignant","lux:secondaire","axis:functionnalites_chatgpt","axis:impacts_ecologiques"]
+    }
+  ]
+}
