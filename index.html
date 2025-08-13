@@ -7,6 +7,11 @@
   <meta name="description" content="Catalogue multi-formations gamifiées avec quiz et persistance des scores." />
     <!-- Link to stylesheet stored at root (site.css) for simplicity -->
     <link rel="stylesheet" href="site.css">
+    <!-- Thème personnalisé pour Äerdschëff -->
+    <link rel="stylesheet" href="./design/theme.css">
+    <!-- Thème distant éditable depuis aerdscheff.lu (facultatif) -->
+    <link rel="preload" as="style" href="https://aerdscheff.lu/assets/aerdscheff-theme.css" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://aerdscheff.lu/assets/aerdscheff-theme.css"></noscript>
 </head>
 <body>
   <header class="container">
@@ -28,8 +33,8 @@
     </div>
   </div>
     <!-- Load app script from root (app.js) -->
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
     <!-- Load admin script from root (admin.js) -->
-    <script src="admin.js"></script>
+    <script type="module" src="admin.js"></script>
 </body>
 </html>
