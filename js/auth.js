@@ -67,3 +67,11 @@ export async function ensureProfile(displayName) {
   const { error } = await client.from('profiles').upsert({ id: user.id, display_name: displayName });
   if (error) console.error('Failed to upsert profile', error);
 }
+/**
+ * Returns the current auth session (JWT, etc.).
+ */
+export async function getSession() {
+  const client = getClient();
+  if (!client) return null;
+  return client.auth.getSession();
+}

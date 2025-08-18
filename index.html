@@ -33,6 +33,13 @@
     </div>
   </div>
     <!-- Load app script from js/app.js (correct path) -->
+  <!-- Supabase ENV injected -->
+  <script>
+    window.ENV = {
+      SUPABASE_URL: "https://eietifgufxrvfoxxznwg.supabase.co",
+      SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpZXRpZmd1ZnhydmZveHh6bndnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxMjgyNzQsImV4cCI6MjA3MDcwNDI3NH0.gwv4MMw5o6HjUO-4UisYFMf6ojds67ep7tk4dBA43gw"
+    };
+  </script>
     <script type="module" src="js/app.js"></script>
     <!-- Modules for authentication, progression et leaderboard -->
     <script type="module" src="js/auth.js"></script>

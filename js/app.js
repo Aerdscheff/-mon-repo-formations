@@ -171,6 +171,21 @@ function renderQuestion() {
       state.progress = applyXp(state.progress, xpEarned, state.roleMap);
     }
     qContainer.appendChild(summary);
+
+    // Commit run to Supabase (end of quiz)
+    try {
+      commitRun({
+        pack: state.pack.id,
+        activityId: state.pack.id + ':' + (state.difficulty||'debutant'),
+        type: 'quiz',
+        difficulty: state.difficulty,
+        correct: state.score,
+        wrong: state.wrong,
+        streakMax: 0,
+        xpEarned: xpEarned
+      });
+    } catch(e) { console.warn('commitRun failed', e); }
+
     const back = document.createElement('button');
     back.className = 'btn secondary';
     back.textContent = 'Retour au catalogue';
