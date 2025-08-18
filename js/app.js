@@ -236,6 +236,19 @@ function renderQuestion() {
       const feedback = document.createElement('div');
       feedback.className = 'feedback';
       if (choice.correct) {
+        try {
+          commitRun({
+            pack: state.pack.id,
+            activityId: (state.pack.questions?.[state.index]?.id) || ('q'+(state.index+1)),
+            type: 'quiz',
+            difficulty: state.difficulty,
+            correct: 1,
+            wrong: 0,
+            streakMax: 0,
+            xpEarned: 0
+          });
+        } catch(e) { console.warn('commitRun(per-question) failed', e); }
+        
         state.score += 1;
         feedback.classList.add('ok');
         feedback.textContent = '✅ Correct. ' + (choice.explain || '');
