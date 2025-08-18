@@ -175,15 +175,22 @@ function renderQuestion() {
     // Commit run to Supabase (end of quiz)
     try {
       commitRun({
-        pack: state.pack.id,
-        activityId: state.pack.id + ':' + (state.difficulty||'debutant'),
-        type: 'quiz',
-        difficulty: state.difficulty,
-        correct: state.score,
-        wrong: state.wrong,
-        streakMax: 0,
-        xpEarned: xpEarned
-      });
+      pack: state.pack.id,
+      activityId: `summary:${state.pack.id}:${state.difficulty}:${state.score}:${state.pack.questions.length}`,
+      type: 'quiz',
+      difficulty: state.difficulty,
+      correct: state.score,
+      wrong: state.wrong,
+      streakMax: 0,
+      xpEarned: xpEarned,
+      client_outcome: {
+        event: 'quiz_summary',
+        total_correct: state.score,
+        total_wrong: state.wrong,
+        ts: Date.now(),
+        idempotency_key: `${state.pack.id}:${state.difficulty}:${state.score}:${state.pack.questions.length}:${Math.floor(Date.now()/(5*60*1000))}`
+      }
+    });
     } catch(e) { console.warn('commitRun failed', e); }
 
     const back = document.createElement('button');
@@ -245,7 +252,14 @@ function renderQuestion() {
             correct: 1,
             wrong: 0,
             streakMax: 0,
-            xpEarned: 0
+            xpEarned: 0,
+            client_outcome: {
+              event: 'question_correct',
+              question_id: (state.pack.questions?.[state.index]?.id) || ('q'+(state.index+1)),
+              question_index: state.index,
+              ts: Date.now(),
+              idempotency_key: `${state.pack.id}:${state.difficulty}:q:${state.index}`
+            }
           });
         } catch(e) { console.warn('commitRun(per-question) failed', e); }
         
