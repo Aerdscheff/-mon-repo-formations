@@ -85,7 +85,10 @@ serve(async (req: Request) => {
       return new Response(JSON.stringify({ success:true, credited:false }), { status: 200 });
     }
 
-    // Summary event: compute XP on server and credit once (soft idempotence)
+    // Summary event: compute XP on server and credit once (use idempotency_key if present)
+    if (co?.event === "quiz_summary" && co?.idempotency_key) {
+      activity_id = `summary:${co.idempotency_key}`;
+    }
     const correct = Number(co.correct ?? 0);
     const wrong = Number(co.wrong ?? 0);
     const streakMax = Number(co.streakMax ?? 0);
@@ -94,16 +97,16 @@ serve(async (req: Request) => {
     // Soft idempotence: if a similar run exists in last 2 minutes, skip credit
     let recentExists = false;
     try {
-      const since = new Date(Date.now() - 2*60*1000).toISOString();
-      const { data: recent, error: recentErr } = await client
-        .from('runs')
-        .select('id')
-        .eq('user_id', user_id)
-        .eq('pack', pack_id)
-        .eq('difficulty', difficulty)
-        .gte('created_at', since)
-        .limit(1);
-      if (!recentErr && recent && recent.length) recentExists = true;
+      if (activity_id.startsWith("summary:")) {
+        const { data: recent, error: recentErr } = await client
+          .from("runs").select("id").eq("user_id", user_id).eq("activity_id", activity_id).limit(1);
+        if (!recentErr && recent && recent.length) recentExists = true;
+      } else {
+        const since = new Date(Date.now() - 2*60*1000).toISOString();
+        const { data: recent, error: recentErr } = await client
+          .from("runs").select("id").eq("user_id", user_id).eq("pack", pack_id).eq("difficulty", difficulty).gte("created_at", since).limit(1);
+        if (!recentErr && recent && recent.length) recentExists = true;
+      }
     } catch(_e) {}
 
     if (!recentExists) {
